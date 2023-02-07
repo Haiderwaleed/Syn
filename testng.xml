@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/Haider/IdeaProjects/Syngenta">
+        <classes>
+
+            <class name="testCases.LoginUserTestCase">
+                <methods>
+                    <include name="UserCanLoginSuccessfully"/>
+                </methods>
+            </class>
+
+            <class name="testCases.UserProfileTestCase">
+                <methods>
+                    <include name="UserCanaccessTheContentPage"/>
+                </methods>
+            </class>
+
+            <class name="testCases.ContentTestCases">
+                <methods>
+                    <include name="UserCanAddContents"/>
+                </methods>
+            </class>
+
+<!--            <class name="testCases.AddLandingPageTestCase">-->
+<!--                <methods>-->
+<!--                    <include name="UserCanAddLandingPageSuccessfully"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+
+            <class name="testCases.NewsTestCase">
+                <methods>
+                    <include name="UserCanAddNewsItem"/>
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+</suite>
