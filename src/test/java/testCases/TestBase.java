@@ -1,6 +1,6 @@
 package testCases;
 
-// initialize the driver and close the driver
+
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import org.apache.commons.io.FileUtils;
@@ -17,6 +17,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class TestBase extends AbstractTestNGCucumberTests {
+
+    // initialize the driver and close the driver
     public static WebDriver driver;
 
     @BeforeSuite
@@ -81,15 +83,15 @@ public class TestBase extends AbstractTestNGCucumberTests {
 
     }
 
-//    @AfterMethod
-//    public void takeScreenshotsSuccess(ITestResult PassResult) throws IOException {
-//        if (ITestResult.SUCCESS == PassResult.getStatus()) {
-//            TakesScreenshot ts = (TakesScreenshot) driver;
-//            File source = ts.getScreenshotAs(OutputType.FILE);
-//            FileUtils.copyFile(source, new File("./Screenshots_Success/" + PassResult.getName() + ".png"));
-//
-//        }
-//    }
+    @AfterMethod
+    public void takeScreenshotsSuccess(ITestResult PassResult) throws IOException {
+        if (ITestResult.SUCCESS == PassResult.getStatus()) {
+            TakesScreenshot ts = (TakesScreenshot) driver;
+            File source = ts.getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(source, new File("./Screenshots_Success/" + PassResult.getName() + ".png"));
+
+        }
+    }
 
     @AfterSuite
     public void stopDriver()

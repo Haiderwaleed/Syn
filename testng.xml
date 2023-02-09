@@ -2,8 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="C:/Users/Haider/IdeaProjects/Syngenta">
-        <classes>
 
+        <parameter name="browser" value="headless"/>
+
+        <classes>
             <class name="testCases.LoginUserTestCase">
                 <methods>
                     <include name="UserCanLoginSuccessfully"/>
