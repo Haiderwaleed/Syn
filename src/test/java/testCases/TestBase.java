@@ -11,9 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,22 +20,47 @@ public class TestBase extends AbstractTestNGCucumberTests {
     public static WebDriver driver;
 
     @BeforeSuite
-    public void startDriver()
+    @Parameters({"browser"})
+    public void startDriver(@Optional("headless") String browserName)
     {
-        // Set the path to the Chrome driver
-        System.setProperty (ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
-        String ChromePath =  System.getProperty("user.dir")+"\\ChromeDriver\\chromedriver.exe";
-        System.setProperty("webdriver.chrome.driver", ChromePath);
+        if
+        (browserName.equalsIgnoreCase("chrome")){
 
-        // insecure connection / untrusted certificate
-        ChromeOptions options = new ChromeOptions();
-        options.setAcceptInsecureCerts(true);
+            // Set the path to the Chrome driver
+            System.setProperty (ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
+            String ChromePath =  System.getProperty("user.dir")+"\\ChromeDriver\\chromedriver.exe";
+            System.setProperty("webdriver.chrome.driver", ChromePath);
 
-        driver = new ChromeDriver(options);
-        options.addArguments("--disable-extensions");
-        options.addArguments("--disable-web-security");
-        options.addArguments("--disable-notifications");
-        options.addArguments("--start-maximized");
+            // insecure connection / untrusted certificate
+            ChromeOptions options = new ChromeOptions();
+            options.setAcceptInsecureCerts(true);
+
+            driver = new ChromeDriver(options);
+            options.addArguments("--disable-extensions");
+            options.addArguments("--disable-web-security");
+            options.addArguments("--disable-notifications");
+            options.addArguments("--start-maximized");
+
+            // Headless browser
+
+        } else if (browserName.equalsIgnoreCase("headless")) {
+
+            System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\ChromeDriver\\chromedriver.exe");
+
+            ChromeOptions options = new ChromeOptions();
+            options.setAcceptInsecureCerts(true);
+            options.addArguments("--window-size=1920,1080");
+            options.addArguments("--disable-gpu");
+            options.addArguments("--disable-extensions");
+            options.setExperimentalOption("useAutomationExtension", false);
+            options.addArguments("--proxy-server='direct://'");
+            options.addArguments("--proxy-bypass-list=*");
+            options.addArguments("--start-maximized");
+            options.addArguments("--headless");
+            driver = new ChromeDriver(options);
+
+
+        }
 
         String userNameAuth = "Syngenta";
         String userPasswordAuth = "Syngenta1";
