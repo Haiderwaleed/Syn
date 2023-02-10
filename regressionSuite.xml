@@ -3,9 +3,7 @@
 	<parameter name="browser" value="headless" />
 	<test name="Regression Test" preserve-order="true">
 		<classes>
-			<class name="testCases.LoginUserTestCase" />
-			<class name="testCases.AddLandingPageTestCase" />
-			<class name="testCases.NewsTestCase" />
+			<class name="testCases.ContentTypeTest" />
 		</classes>
 	</test>
 </suite> 

@@ -6,20 +6,10 @@
         <parameter name="browser" value="headless"/>
 
         <classes>
-            <class name="testCases.LoginUserTestCase">
+            <class name="testCases.ContentTypeTest">
                 <methods>
                     <include name="UserCanLoginSuccessfully"/>
-                </methods>
-            </class>
-
-            <class name="testCases.AddLandingPageTestCase">
-                <methods>
                     <include name="UserCanAddLandingPageSuccessfully"/>
-                </methods>
-            </class>
-
-            <class name="testCases.NewsTestCase">
-                <methods>
                     <include name="UserCanAddNewsItem"/>
                 </methods>
             </class>
