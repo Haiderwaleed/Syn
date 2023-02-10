@@ -6,6 +6,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.pages.ContentPage;
 import org.pages.NewsPage;
+import org.pages.UserProfilePage;
 import org.testng.ITest;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -17,6 +18,7 @@ import java.io.IOException;
 public class NewsTestCase extends TestBase{
     ContentPage contentPage;
     NewsPage newsPage;
+    UserProfilePage userProfilePage;
 
     // DDT
     String NewsTitle = LoadProperties.userData.getProperty("NewsTitle");
@@ -32,7 +34,10 @@ public class NewsTestCase extends TestBase{
 
     @Test
     public void UserCanAddNewsItem() throws InterruptedException {
+        userProfilePage = new UserProfilePage(driver);
+        userProfilePage.openContentPage();
         contentPage = new ContentPage(driver);
+        contentPage.AddContents();
         contentPage.AddNewsPage();
         newsPage = new NewsPage(driver);
         newsPage.SelectNewLanguage();

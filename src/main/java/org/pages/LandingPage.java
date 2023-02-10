@@ -48,4 +48,18 @@ public class LandingPage extends PageBase{
         saveLandingPageButton.click();
     }
 
+    @FindBy (css = "div[class='region region-highlighted'] li:nth-child(4) a:nth-child(1)")
+    WebElement deleteLandingPageBtn;
+
+    @FindBy (id = "edit-submit")
+    WebElement deleteBtn;
+    public void DeleteLandingPage() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='region region-highlighted'] li:nth-child(4) a:nth-child(1)")));
+        deleteLandingPageBtn.click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("edit-submit")));
+        deleteBtn.click();
+
+
+    }
+
 }

@@ -18,5 +18,6 @@ public class AddLandingPageTestCase extends TestBase{
         landingPage.LanguageSelectorOption();
         landingPage.AddTitleLandingPage(title);
         landingPage.SaveLandingPage();
+        landingPage.DeleteLandingPage();
     }
 }
