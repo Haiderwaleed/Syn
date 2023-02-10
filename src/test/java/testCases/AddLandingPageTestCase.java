@@ -13,6 +13,8 @@ public class AddLandingPageTestCase extends TestBase{
 @Test
     public void UserCanAddLandingPageSuccessfully(){
         contentPage = new ContentPage(driver);
+        contentPage.openContentPage();
+        contentPage.AddContents();
         contentPage.AddLandingPage();
         landingPage = new LandingPage(driver);
         landingPage.LanguageSelectorOption();

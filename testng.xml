@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite">
+<suite name="All Test Suite" parallel="none">
     <test verbose="2" preserve-order="true" name="C:/Users/Haider/IdeaProjects/Syngenta">
 
         <parameter name="browser" value="headless"/>
@@ -9,18 +9,6 @@
             <class name="testCases.LoginUserTestCase">
                 <methods>
                     <include name="UserCanLoginSuccessfully"/>
-                </methods>
-            </class>
-
-            <class name="testCases.UserProfileTestCase">
-                <methods>
-                    <include name="UserCanaccessTheContentPage"/>
-                </methods>
-            </class>
-
-            <class name="testCases.ContentTestCases">
-                <methods>
-                    <include name="UserCanAddContents"/>
                 </methods>
             </class>
 
