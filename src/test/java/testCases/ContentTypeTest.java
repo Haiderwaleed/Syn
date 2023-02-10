@@ -1,12 +1,55 @@
 package testCases;
 
 import data.LoadProperties;
-import org.pages.ContentPage;
-import org.pages.NewsPage;
+import org.pages.*;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class NewsTestCase extends TestBase{
+public class ContentTypeTest extends TestBase{
+
+    // Login Test case
+
+    HomePage homePageObject;
+    UserLoginPage userLoginPage;
+
+
+    //     DDT file properties
+    String email = LoadProperties.userData.getProperty("email");
+    String password = LoadProperties.userData.getProperty("password");
+
+
+
+    @Test (priority = 1)
+    public void UserCanLoginSuccessfully()
+    {
+        homePageObject = new HomePage(driver);
+        homePageObject.loginPage();
+        userLoginPage = new UserLoginPage(driver);
+        userLoginPage.userLogin(email,password);
+        Assert.assertTrue(userLoginPage.successLogin.getText().contains("Tools"));
+    }
+
+
+    // Add landing page
+
     ContentPage contentPage;
+    LandingPage landingPage;
+    String title = LoadProperties.userData.getProperty("titleLandingPage");
+
+    @Test (priority = 2)
+    public void UserCanAddLandingPageSuccessfully(){
+        contentPage = new ContentPage(driver);
+        contentPage.openContentPage();
+        contentPage.AddContents();
+        contentPage.AddLandingPage();
+        landingPage = new LandingPage(driver);
+        landingPage.LanguageSelectorOption();
+        landingPage.AddTitleLandingPage(title);
+        landingPage.SaveLandingPage();
+        landingPage.DeleteLandingPage();
+    }
+
+    // Add news
     NewsPage newsPage;
 
     // DDT
@@ -21,7 +64,7 @@ public class NewsTestCase extends TestBase{
     String NewsTarget = LoadProperties.userData.getProperty("NewsTarget");
 
 
-    @Test
+    @Test (priority = 3)
     public void UserCanAddNewsItem() throws InterruptedException {
         contentPage = new ContentPage(driver);
         contentPage.openContentPage();
@@ -47,4 +90,5 @@ public class NewsTestCase extends TestBase{
         newsPage.SaveNewsNode();
         newsPage.DeleteNews();
     }
+
 }
