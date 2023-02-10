@@ -24,11 +24,11 @@
                 </methods>
             </class>
 
-<!--            <class name="testCases.AddLandingPageTestCase">-->
-<!--                <methods>-->
-<!--                    <include name="UserCanAddLandingPageSuccessfully"/>-->
-<!--                </methods>-->
-<!--            </class>-->
+            <class name="testCases.AddLandingPageTestCase">
+                <methods>
+                    <include name="UserCanAddLandingPageSuccessfully"/>
+                </methods>
+            </class>
 
             <class name="testCases.NewsTestCase">
                 <methods>
