@@ -18,10 +18,10 @@ public class ContentPage extends PageBase{
 
     Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
             .withTimeout(Duration.ofSeconds(30))
-            .pollingEvery(Duration.ofSeconds(5))
+            .pollingEvery(Duration.ofSeconds(2))
             .ignoring(NoSuchElementException.class);
 
-    @FindBy (css = ".button.button--action.button--primary")
+    @FindBy (partialLinkText= "Add content")
     WebElement addContentButton;
 
     @FindBy (css= "div[class='layout-container'] div:nth-child(6)")
@@ -30,8 +30,15 @@ public class ContentPage extends PageBase{
     @FindBy (css ="div:nth-child(10)")
     WebElement newsItemButton;
 
+    @FindBy (linkText = "Content")
+    WebElement contentButton;
+
+    public void openContentPage(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Content")));
+        contentButton.click();
+    }
     public void AddContents(){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".button.button--action.button--primary")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Add content")));
         addContentButton.click();
     }
     public void AddLandingPage(){
@@ -42,4 +49,5 @@ public class ContentPage extends PageBase{
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div:nth-child(10)")));
         newsItemButton.click();
     }
+
 }

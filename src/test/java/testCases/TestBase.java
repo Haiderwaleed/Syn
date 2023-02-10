@@ -1,6 +1,7 @@
 package testCases;
 
 
+import data.LoadProperties;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -8,6 +9,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.pages.HomePage;
+import org.pages.UserLoginPage;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
@@ -70,6 +74,7 @@ public class TestBase {
 
 
     }
+
     @AfterMethod
     public void takeScreenshotsFailed(ITestResult FailedResult) throws IOException {
         if (ITestResult.FAILURE == FailedResult.getStatus()){

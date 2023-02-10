@@ -22,7 +22,7 @@ public class NewsPage extends PageBase {
     // Fluent Wait
     Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
             .withTimeout(Duration.ofSeconds(30))
-            .pollingEvery(Duration.ofSeconds(5))
+            .pollingEvery(Duration.ofSeconds(2))
             .ignoring(NoSuchElementException.class);
 
     // Select the node language
@@ -162,8 +162,9 @@ public class NewsPage extends PageBase {
     @FindBy(css = ".claro-details__summary.claro-details__summary--vertical-tabs-item[aria-controls='edit-group-related-content']")
     WebElement relatedContentDropDownBtn;
 
-    public void RelatedContentDropdown() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".contextual-region.syn-media-type.media-library-item__preview-wrapper")));
+    public void RelatedContentDropdown() throws InterruptedException {
+        Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("edit-group-related-content")));
         relatedContentDropDownBtn.click();
     }
 

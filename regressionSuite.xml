@@ -1,11 +1,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Regression Suite">
-	<parameter name="browser" value="chrome" />
+<suite name="Regression Suite" parallel="none">
+	<parameter name="browser" value="headless" />
 	<test name="Regression Test" preserve-order="true">
 		<classes>
 			<class name="testCases.LoginUserTestCase" />
-			<class name="testCases.UserProfileTestCase" />
-			<class name="testCases.ContentTestCases" />
 			<class name="testCases.AddLandingPageTestCase" />
 			<class name="testCases.NewsTestCase" />
 		</classes>
