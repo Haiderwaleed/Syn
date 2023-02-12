@@ -2,6 +2,7 @@
 <suite name="Regression Suite" parallel="none">
 	<parameter name="browser" value="headless" />
 	<test name="Regression Test" preserve-order="true">
+		<parameter name="browser" value="headless" />
 		<classes>
 			<class name="testCases.ContentTypeTest" />
 		</classes>
