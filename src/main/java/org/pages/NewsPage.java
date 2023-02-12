@@ -74,8 +74,8 @@ public class NewsPage extends PageBase {
     @FindBy(id = "edit-field-teaser-0-value")
     WebElement teaserNews;
 
-    public void AddNewsTeaser(String NewsTeaserValue) {
-        teaserNews.sendKeys(NewsTeaserValue);
+    public void AddNewsTeaser(String TeaserFiled) {
+        teaserNews.sendKeys(TeaserFiled);
     }
 
     // Add Body text
@@ -84,9 +84,9 @@ public class NewsPage extends PageBase {
     @FindBy(xpath = "(//body)[1]")
     WebElement bodyTextarea;
 
-    public void switchToFrame(String NewsBodyValue) {
+    public void switchToFrame(String DescriptionFiled) {
         driver.switchTo().frame(bodyIframe);
-        bodyTextarea.sendKeys(NewsBodyValue);
+        bodyTextarea.sendKeys(DescriptionFiled);
         driver.switchTo().defaultContent();
     }
 
@@ -110,8 +110,8 @@ public class NewsPage extends PageBase {
     @FindBy(id = "edit-field-geo-region-0-target-id")
     WebElement addGeoRegionNews;
 
-    public void AddGeoRegion(String GeoTitle) {
-        addGeoRegionNews.sendKeys(GeoTitle);
+    public void AddGeoRegion(String GeoRegion) {
+        addGeoRegionNews.sendKeys(GeoRegion);
     }
 
     // Click on the Media dropdown button

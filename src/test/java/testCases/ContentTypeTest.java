@@ -5,20 +5,34 @@ import org.pages.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class ContentTypeTest extends TestBase{
+public class ContentTypeTest extends TestBase {
+
+    //     DDT file properties
+    String email = LoadProperties.userData.getProperty("email");
+    String password = LoadProperties.userData.getProperty("password");
+    String NewsTitle = LoadProperties.userData.getProperty("NewsTitle");
+    String NewsMainCategory = LoadProperties.userData.getProperty("NewsMainCategory");
+    String TeaserFiled = LoadProperties.userData.getProperty("TeaserFiled");
+    String DescriptionFiled = LoadProperties.userData.getProperty("DescriptionFiled");
+    String Tags = LoadProperties.userData.getProperty("Tags");
+    String GeoRegion = LoadProperties.userData.getProperty("GeoRegion");
+    String NewsCpProducts = LoadProperties.userData.getProperty("NewsCpProducts");
+    String NewsSeeds = LoadProperties.userData.getProperty("NewsSeeds");
+    String NewsTarget = LoadProperties.userData.getProperty("NewsTarget");
+    String title = LoadProperties.userData.getProperty("titleLandingPage");
+    String EventTitle = LoadProperties.userData.getProperty("EventTitle");
+    String StartDate = LoadProperties.userData.getProperty("StartDate");
+    String Time = LoadProperties.userData.getProperty("Time");
+    String CommentAddress = LoadProperties.userData.getProperty("CommentAddress");
+    String EventLabel = LoadProperties.userData.getProperty("EventLabel");
+    String RelatedEventFiled = LoadProperties.userData.getProperty("RelatedEventFiled");
+    String SalesFiled = LoadProperties.userData.getProperty("SalesFiled");
+    String FinalDate = LoadProperties.userData.getProperty("FinalDate");
 
     // Login Test case
 
     HomePage homePageObject;
     UserLoginPage userLoginPage;
-
-
-    //     DDT file properties
-    String email = LoadProperties.userData.getProperty("email");
-    String password = LoadProperties.userData.getProperty("password");
-
-
-
     @Test (priority = 1)
     public void UserCanLoginSuccessfully()
     {
@@ -34,7 +48,6 @@ public class ContentTypeTest extends TestBase{
 
     ContentPage contentPage;
     LandingPage landingPage;
-    String title = LoadProperties.userData.getProperty("titleLandingPage");
 
     @Test (priority = 2)
     public void UserCanAddLandingPageSuccessfully(){
@@ -52,18 +65,6 @@ public class ContentTypeTest extends TestBase{
     // Add news
     NewsPage newsPage;
 
-    // DDT
-    String NewsTitle = LoadProperties.userData.getProperty("NewsTitle");
-    String NewsMainCategory = LoadProperties.userData.getProperty("NewsMainCategory");
-    String NewsTeaser = LoadProperties.userData.getProperty("NewsTeaser");
-    String NewsBody = LoadProperties.userData.getProperty("NewsBody");
-    String Tags = LoadProperties.userData.getProperty("Tags");
-    String NewsGeoRegion = LoadProperties.userData.getProperty("NewsGeoRegion");
-    String NewsCpProducts = LoadProperties.userData.getProperty("NewsCpProducts");
-    String NewsSeeds = LoadProperties.userData.getProperty("NewsSeeds");
-    String NewsTarget = LoadProperties.userData.getProperty("NewsTarget");
-
-
     @Test (priority = 3)
     public void UserCanAddNewsItem() throws InterruptedException {
         contentPage = new ContentPage(driver);
@@ -75,11 +76,11 @@ public class ContentTypeTest extends TestBase{
         newsPage.AddNewsTitle(NewsTitle);
         newsPage.SelectNewsItemType();
         newsPage.AddNewsMainCategory(NewsMainCategory);
-        newsPage.AddNewsTeaser(NewsTeaser);
-        newsPage.switchToFrame(NewsBody);
+        newsPage.AddNewsTeaser(TeaserFiled);
+        newsPage.switchToFrame(DescriptionFiled);
         newsPage.TaxonomyDropdown();
         newsPage.AddTags(Tags);
-        newsPage.AddGeoRegion(NewsGeoRegion);
+        newsPage.AddGeoRegion(GeoRegion);
         newsPage.MediaDropDown();
         newsPage.AddThumbnailImage();
         newsPage.AddMainImage();
@@ -89,6 +90,42 @@ public class ContentTypeTest extends TestBase{
         newsPage.AddTargets(NewsTarget);
         newsPage.SaveNewsNode();
         newsPage.DeleteNews();
+    }
+
+    EventsPage eventsPage;
+
+
+    @Test (priority = 4)
+    public void UserCanAddEvent()  {
+        contentPage = new ContentPage(driver);
+        contentPage.openContentPage();
+        contentPage.AddContents();
+        contentPage.AddEventPage();
+        eventsPage = new EventsPage(driver);
+        eventsPage.SelectEventLanguage();
+        eventsPage.AddEventName(EventTitle);
+        eventsPage.SelectEventItemType();
+        eventsPage.EnableEndDate();
+        eventsPage.EnableTimezone();
+        eventsPage.AddEventStartDate(StartDate,Time);
+        eventsPage.AddEventFinalDate(FinalDate, Time);
+        eventsPage.AddEventTeaser(TeaserFiled);
+        eventsPage.switchToFrameEventDescription(DescriptionFiled);
+        eventsPage.AddEventThumbnailImage();
+        eventsPage.AddEventHomepageImage();
+        eventsPage.AddEventBannerImage();
+        eventsPage.AddEventGeoRegion(GeoRegion);
+        eventsPage.AddressDropdown();
+        eventsPage.AddEventAddress(CommentAddress);
+        eventsPage.AddEventRegistration(StartDate);
+        eventsPage.AddEventOverview(DescriptionFiled);
+        eventsPage.AddEventLogistics(DescriptionFiled, EventLabel);
+        eventsPage.AddEventAgenda(DescriptionFiled, EventLabel);
+        eventsPage.AddEventRelatedEvent(RelatedEventFiled);
+        eventsPage.AddEventSalesRepresentative(SalesFiled);
+        eventsPage.SaveEventNode();
+        eventsPage.DeleteEvent();
+
     }
 
 }

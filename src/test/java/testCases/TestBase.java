@@ -1,7 +1,5 @@
 package testCases;
 
-
-import data.LoadProperties;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -9,9 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.pages.HomePage;
-import org.pages.UserLoginPage;
-import org.testng.Assert;
+
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
@@ -68,8 +64,8 @@ public class TestBase {
 
         String userNameAuth = "Syngenta";
         String userPasswordAuth = "Syngenta1";
-        String URL = "https://"+userNameAuth+":"+userPasswordAuth+"@py.syngentacpd9.acsitefactory.com";
-        driver.get(URL);
+        String BaseURL = "https://"+userNameAuth+":"+userPasswordAuth+"@py.syngentacpd9.acsitefactory.com";
+        driver.get(BaseURL);
         driver.manage().window().maximize();
 
 
