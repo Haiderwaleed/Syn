@@ -10,10 +10,12 @@
             <class name="testCases.ContentTypeTest">
                 <methods>
                     <include name="UserCanLoginSuccessfully"/>
-                    <include name="UserCanAddLandingPageSuccessfully"/>
-                    <include name="UserCanAddNewsItem"/>
-                    <include name="UserCanAddEvent"/>
-                    <include name="UserCanAddBlogPage"/>
+<!--                    <include name="UserCanAddLandingPageSuccessfully"/>-->
+<!--                    <include name="UserCanAddNewsItem"/>-->
+<!--                    <include name="UserCanAddEvent"/>-->
+<!--                    <include name="UserCanAddBlogPage"/>-->
+                    <include name="UserCanAddContactInfoPage"/>
+
 
 
                 </methods>

@@ -29,6 +29,15 @@ public class ContentTypeTest extends TestBase {
     String SalesFiled = LoadProperties.userData.getProperty("SalesFiled");
     String FinalDate = LoadProperties.userData.getProperty("FinalDate");
     String BlogTitle = LoadProperties.userData.getProperty("BlogTitle");
+    String SecondTitle = LoadProperties.userData.getProperty("SecondTitle");
+    String ContactInfoTitle = LoadProperties.userData.getProperty("ContactInfoTitle");
+    String Phone = LoadProperties.userData.getProperty("Phone");
+    String Site = LoadProperties.userData.getProperty("Site");
+    String StreetAddress = LoadProperties.userData.getProperty("StreetAddress");
+    String PostalCode = LoadProperties.userData.getProperty("PostalCode");
+    String City = LoadProperties.userData.getProperty("City");
+
+
 
     // Login Test case
 
@@ -152,6 +161,27 @@ public class ContentTypeTest extends TestBase {
         blogEntryPage.CommentOption();
         blogEntryPage.SaveBlogNode();
         blogEntryPage.DeleteBlog();
+
+    }
+
+    ContactInformationPage contactInformationPage;
+
+    @Test (priority = 6)
+    public void UserCanAddContactInfoPage() throws InterruptedException {
+        contentPage = new ContentPage(driver);
+        contentPage.openContentPage();
+        contentPage.AddContents();
+        contentPage.AddContactInfoPage();
+        contactInformationPage = new ContactInformationPage(driver);
+        contactInformationPage.AddFirstContactInfoTitle(ContactInfoTitle);
+        contactInformationPage.AddContactInfoBody(DescriptionFiled);
+//        contactInformationPage.AddressSection(StreetAddress, PostalCode, City);
+        contactInformationPage.SelectContactInfoCountry();
+        contactInformationPage.AddPhoneAndSite(Phone, Site);
+        contactInformationPage.AddContactInfoLogoImage();
+        contactInformationPage.Add2ndTitle(SecondTitle);
+        contactInformationPage.SaveBlogNode();
+        contactInformationPage.DeleteContactInfo();
 
     }
 

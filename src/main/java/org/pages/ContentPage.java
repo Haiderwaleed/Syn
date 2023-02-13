@@ -33,6 +33,8 @@ public class ContentPage extends PageBase{
     WebElement AddEvent;
     @FindBy (css = "a[title='Blog entry']")
     WebElement addBlog;
+    @FindBy (css = "a[title='Contact Information']")
+    WebElement addContactInfoPage;
 
     public void openContentPage(){
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Content")));
@@ -58,5 +60,8 @@ public class ContentPage extends PageBase{
         addBlog.click();
     }
 
-
+    public void AddContactInfoPage(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[title='Contact Information']")));
+        addContactInfoPage.click();
+    }
 }
