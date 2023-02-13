@@ -31,6 +31,8 @@ public class ContentPage extends PageBase{
     WebElement contentButton;
     @FindBy (css = "a[title='Event']")
     WebElement AddEvent;
+    @FindBy (css = "a[title='Blog entry']")
+    WebElement addBlog;
 
     public void openContentPage(){
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Content")));
@@ -48,9 +50,13 @@ public class ContentPage extends PageBase{
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div:nth-child(10)")));
         newsItemButton.click();
     }
-
     public void AddEventPage(){
         AddEvent.click();
     }
+    public void AddBlogPage(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[title='Blog entry']")));
+        addBlog.click();
+    }
+
 
 }

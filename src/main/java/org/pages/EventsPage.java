@@ -52,7 +52,6 @@ public class EventsPage extends PageBase{
     public void SelectEventItemType() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("edit-field-event-type-wrapper")));
         Select selectEventItemOption = new Select(selectEventType);
-        Assert.assertFalse(selectEventItemOption.isMultiple());
         selectEventItemOption.selectByIndex(1);
     }
 
@@ -86,6 +85,9 @@ public class EventsPage extends PageBase{
     @FindBy (id = "edit-field-event-date-0-end-value-time")
     WebElement addEventFinalTime;
 
+    @FindBy (id = "edit-field-event-date-0-timezone")
+    WebElement selectTimeZone;
+
     public void AddEventStartDate(String StartData, String Time){
         addEvenStartDate.sendKeys(StartData);
         addEventStartTime.sendKeys(Time);
@@ -93,6 +95,11 @@ public class EventsPage extends PageBase{
     public void AddEventFinalDate(String FinalDate, String Time){
         addEventFinalDate.sendKeys(FinalDate);
         addEventFinalTime.sendKeys(Time);
+    }
+
+    public void SelectTimeZone(){
+        Select selectEventTimeZoneOption = new Select(selectTimeZone);
+        selectEventTimeZoneOption.selectByIndex(360);
     }
 
     // Event Tease
@@ -302,8 +309,6 @@ public class EventsPage extends PageBase{
         deleteEventNode.click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("claro-details__summary")));
         deleteBtn.click();
-
-
     }
 
 

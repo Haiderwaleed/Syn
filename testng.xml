@@ -13,6 +13,7 @@
                     <include name="UserCanAddLandingPageSuccessfully"/>
                     <include name="UserCanAddNewsItem"/>
                     <include name="UserCanAddEvent"/>
+                    <include name="UserCanAddBlogPage"/>
 
 
                 </methods>

@@ -28,6 +28,7 @@ public class ContentTypeTest extends TestBase {
     String RelatedEventFiled = LoadProperties.userData.getProperty("RelatedEventFiled");
     String SalesFiled = LoadProperties.userData.getProperty("SalesFiled");
     String FinalDate = LoadProperties.userData.getProperty("FinalDate");
+    String BlogTitle = LoadProperties.userData.getProperty("BlogTitle");
 
     // Login Test case
 
@@ -92,8 +93,8 @@ public class ContentTypeTest extends TestBase {
         newsPage.DeleteNews();
     }
 
+    // Add Event Page
     EventsPage eventsPage;
-
 
     @Test (priority = 4)
     public void UserCanAddEvent()  {
@@ -109,6 +110,7 @@ public class ContentTypeTest extends TestBase {
         eventsPage.EnableTimezone();
         eventsPage.AddEventStartDate(StartDate,Time);
         eventsPage.AddEventFinalDate(FinalDate, Time);
+        eventsPage.SelectTimeZone();
         eventsPage.AddEventTeaser(TeaserFiled);
         eventsPage.switchToFrameEventDescription(DescriptionFiled);
         eventsPage.AddEventThumbnailImage();
@@ -125,6 +127,31 @@ public class ContentTypeTest extends TestBase {
         eventsPage.AddEventSalesRepresentative(SalesFiled);
         eventsPage.SaveEventNode();
         eventsPage.DeleteEvent();
+
+    }
+
+    // Add Blog Page
+    BlogEntryPage blogEntryPage;
+    @Test (priority = 5)
+    public void UserCanAddBlogPage() throws InterruptedException {
+        contentPage = new ContentPage(driver);
+        contentPage.openContentPage();
+        contentPage.AddContents();
+        contentPage.AddBlogPage();
+        blogEntryPage = new BlogEntryPage(driver);
+        blogEntryPage.SelectBlogLanguage();
+        blogEntryPage.AddBlogTitle(BlogTitle);
+        blogEntryPage.SelectBlogAuthor();
+        blogEntryPage.SelectBlogType();
+        blogEntryPage.AddThumbnailImage();
+        blogEntryPage.AddBlogBody(DescriptionFiled);
+        blogEntryPage.DisplayAuthorName();
+        blogEntryPage.BlogVisibility();
+        blogEntryPage.CustomerGroup();
+        blogEntryPage.RatingOptions();
+        blogEntryPage.CommentOption();
+        blogEntryPage.SaveBlogNode();
+        blogEntryPage.DeleteBlog();
 
     }
 
