@@ -77,7 +77,6 @@ public class BlogEntryPage extends PageBase {
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".view-header")));
         selectThumbnailImage.click();
         insertBlogThumbnailImage.click();
-
     }
 
     // Add Body
@@ -88,7 +87,7 @@ public class BlogEntryPage extends PageBase {
     WebElement blogBodyTextArea;
 
     public void AddBlogBody(String DescriptionFiled) throws InterruptedException {
-        Thread.sleep(3000);
+        Thread.sleep(4000);
         driver.switchTo().frame(switchToBlogIframe);
         blogBodyTextArea.sendKeys(DescriptionFiled);
         driver.switchTo().defaultContent();
