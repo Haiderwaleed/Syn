@@ -157,7 +157,7 @@ public class BlogEntryPage extends PageBase {
     WebElement deleteBtn;
 
     public void DeleteBlog() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Translate")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Delete")));
         deleteBlogNode.click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("claro-details__summary")));
         deleteBtn.click();
