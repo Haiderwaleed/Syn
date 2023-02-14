@@ -33,9 +33,20 @@ public class ContentTypeTest extends TestBase {
     String ContactInfoTitle = LoadProperties.userData.getProperty("ContactInfoTitle");
     String Phone = LoadProperties.userData.getProperty("Phone");
     String Site = LoadProperties.userData.getProperty("Site");
+
     String StreetAddress = LoadProperties.userData.getProperty("StreetAddress");
     String PostalCode = LoadProperties.userData.getProperty("PostalCode");
     String City = LoadProperties.userData.getProperty("City");
+    String CompanyName = LoadProperties.userData.getProperty("CompanyName");
+    String Location = LoadProperties.userData.getProperty("Location");
+    String Business = LoadProperties.userData.getProperty("Business");
+    String WebURL = LoadProperties.userData.getProperty("WebURL");
+    String FAQTitle = LoadProperties.userData.getProperty("FAQTitle");
+    String Question = LoadProperties.userData.getProperty("Question");
+
+
+
+
 
 
 
@@ -182,6 +193,46 @@ public class ContentTypeTest extends TestBase {
         contactInformationPage.Add2ndTitle(SecondTitle);
         contactInformationPage.SaveBlogNode();
         contactInformationPage.DeleteContactInfo();
+
+    }
+
+    DistributorPage distributorPage;
+    @Test(priority = 7)
+    public void UserCanAddDistributorPage(){
+        contentPage = new ContentPage(driver);
+        contentPage.openContentPage();
+        contentPage.AddContents();
+        contentPage.AddDistributorPage();
+        distributorPage = new DistributorPage(driver);
+        distributorPage.DistributorCompanyName(CompanyName);
+        distributorPage.SelectDistributorLanguage();
+        distributorPage.DistributorRegions();
+        distributorPage.DistributorAdditionalProperties();
+        distributorPage.AddPhoneEmailWebDistributor(Phone, email, WebURL);
+        distributorPage.DistributorLocationAndBusiness(Location, Business);
+        distributorPage.SwitchToDistributorIframe(DescriptionFiled);
+        distributorPage.SaveDistributorNode();
+        distributorPage.DeleteDistributor();
+    }
+
+    FAQPage faqPage;
+
+    @Test (priority = 8)
+    public void UserCanAddFAQPage(){
+        contentPage = new ContentPage(driver);
+        contentPage.openContentPage();
+        contentPage.AddContents();
+        contentPage.AddFAQPage();
+        faqPage = new FAQPage(driver);
+        faqPage.FAQTitle(FAQTitle);
+        faqPage.SelectFAQLanguage();
+        faqPage.SwitchToBodyIframe(DescriptionFiled);
+        faqPage.SwitchToDistributorIframe(DescriptionFiled, Question);
+        faqPage.AddAccordionItem(DescriptionFiled, Question);
+        faqPage.AddSecondAccordion(DescriptionFiled, Question);
+        faqPage.FAQTags(Tags);
+        faqPage.SaveFAQNode();
+        faqPage.DeleteFAQ();
 
     }
 

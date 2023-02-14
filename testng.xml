@@ -14,7 +14,9 @@
 <!--                    <include name="UserCanAddNewsItem"/>-->
 <!--                    <include name="UserCanAddEvent"/>-->
 <!--                    <include name="UserCanAddBlogPage"/>-->
-                    <include name="UserCanAddContactInfoPage"/>
+<!--                    <include name="UserCanAddContactInfoPage"/>-->
+<!--                    <include name="UserCanAddDistributorPage"/>-->
+                    <include name="UserCanAddFAQPage"/>
 
 
 
